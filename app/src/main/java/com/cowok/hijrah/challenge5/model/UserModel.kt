@@ -5,5 +5,7 @@ import java.io.Serializable
 data class UserModel(
     var username: String,
     var name: String,
-    var password: String
+    var password: String,
+    var age: Int,
+    var addr: String
 ): Serializable

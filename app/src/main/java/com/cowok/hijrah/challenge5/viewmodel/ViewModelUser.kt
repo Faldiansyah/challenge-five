@@ -2,6 +2,7 @@ package com.cowok.hijrah.challenge5.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.cowok.hijrah.challenge5.MainActivity
 import com.cowok.hijrah.challenge5.model.GetAllUserResponseItem
 import com.cowok.hijrah.challenge5.model.UserModel
 import com.cowok.hijrah.challenge5.network.RetrofitUser
@@ -12,6 +13,7 @@ import retrofit2.Response
 class ViewModelUser : ViewModel() {
     private lateinit var liveDataUser: MutableLiveData<List<GetAllUserResponseItem>>
     private lateinit var postLDUser: MutableLiveData<GetAllUserResponseItem>
+    private lateinit var putLDUser : MutableLiveData<List<GetAllUserResponseItem>>
 
     init {
         liveDataUser = MutableLiveData()
@@ -26,8 +28,8 @@ class ViewModelUser : ViewModel() {
         return postLDUser
     }
 
-    fun callPostApiCar(name: String, username: String, password: String){
-        RetrofitUser.instance.addUser(UserModel(name, username, password))
+    fun callPostApiCar(name: String, username: String, password: String, age: Int, addr: String){
+        RetrofitUser.instance.addUser(UserModel(name, username, password, age, addr))
             .enqueue(object : Callback<GetAllUserResponseItem>{
                 override fun onResponse(
                     call: Call<GetAllUserResponseItem>,
@@ -68,8 +70,8 @@ class ViewModelUser : ViewModel() {
             })
     }
 
-    fun requestLogin(id: Int, name: String, username: String, password: String) {
-        RetrofitUser.instance.putUser(id, UserModel(name, username, password))
+    fun requestLogin(id: Int, name: String, username: String, password: String, age: Int, addr: String) {
+        RetrofitUser.instance.putUser(id, UserModel(name, username, password, age, addr))
             .enqueue(object : Callback<List<GetAllUserResponseItem>>{
                 override fun onResponse(
                     call: Call<List<GetAllUserResponseItem>>,
@@ -83,5 +85,23 @@ class ViewModelUser : ViewModel() {
                 }
 
             })
+    }
+
+    fun callEditUser(id:Int, name : String, username :String, password: String, age :Int, addr : String){
+        RetrofitUser.instance.putUser(id, UserModel(name, username, password, age, addr))
+            .enqueue(object : Callback<List<GetAllUserResponseItem>>{
+                override fun onResponse(call: Call<List<GetAllUserResponseItem>>, response: Response<List<GetAllUserResponseItem>>) {
+                    if(response.isSuccessful){
+                        putLDUser.postValue(response.body())
+                    }
+                }
+                override fun onFailure(call: Call<List<GetAllUserResponseItem>>, t: Throwable) {
+                    MainActivity()
+                }
+            })
+    }
+
+    fun editLiveDataUser() : MutableLiveData<List<GetAllUserResponseItem>>{
+        return putLDUser
     }
 }

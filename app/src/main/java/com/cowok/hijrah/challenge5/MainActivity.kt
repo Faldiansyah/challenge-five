@@ -1,5 +1,6 @@
 package com.cowok.hijrah.challenge5
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var gameAdapter: GameAdapter
     private lateinit var sharedPref: SharedPreferences
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         sharedPref = this.getSharedPreferences("dataUser", Context.MODE_PRIVATE)
         binding.welcomeText.setText(
-            sharedPref.getString("username", "")
+            "Selamat Datang, "+sharedPref.getString("name", "")
         )
 
         binding.imageProfile.setOnClickListener {

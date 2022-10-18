@@ -1,10 +1,12 @@
 package com.cowok.hijrah.challenge5
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.cowok.hijrah.challenge5.adapter.UserAdapter
@@ -86,7 +88,8 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<List<GetAllUserResponseItem>>, t: Throwable) {
-                    TODO("Not yet implemented")
+//                    toast("Gagal Memuat Data OnFailure!")
+                    Log.e(ContentValues.TAG, "onFailure: ${t.message}")
                 }
 
             })

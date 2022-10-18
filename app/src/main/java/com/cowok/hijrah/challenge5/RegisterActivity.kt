@@ -22,15 +22,17 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnDaftar.setOnClickListener {
 
             //ambil inputan data dari layout
-            var edtUsername = binding.editUserRegis.text.toString()
-            var edtFullname = binding.editFullRegis.text.toString()
-            var edtPassword = binding.editPassRegis.text.toString()
-            var edtConfirm = binding.editConfRegis.text.toString()
+            val edtUsername = binding.editUserRegis.text.toString()
+            val edtFullname = binding.editFullRegis.text.toString()
+            val edtPassword = binding.editPassRegis.text.toString()
+            val edtConfirm = binding.editConfRegis.text.toString()
+            var editAge = binding.editUmur.text.toString().toInt()
+            var editAddr = binding.editAlamat.text.toString()
 
             //seleksi password
             if (edtPassword.equals(edtConfirm)) {
                 //masukin data ke API
-                addUser(edtFullname, edtUsername, edtPassword)
+                addUser(edtUsername, edtFullname, edtPassword, editAge, editAddr)
                 //back to login
                 var pindah = Intent(this, LoginActivity::class.java)
                 startActivity(pindah)
@@ -42,9 +44,9 @@ class RegisterActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    fun addUser(name: String, username: String, password: String){
+    fun addUser(username: String, name: String, password: String, age: Int, addr: String){
         var viewModel = ViewModelProvider(this).get(ViewModelUser::class.java)
-        viewModel.callPostApiCar(name, username, password)
+        viewModel.callPostApiCar(username, name, password, age, addr)
         viewModel.addLiveDataUser().observe(this, {
             if (it != null){
                 Toast.makeText(this, "Registrasi Berhasil!", Toast.LENGTH_SHORT).show()

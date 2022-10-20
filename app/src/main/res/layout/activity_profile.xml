@@ -79,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="logout"
+        android:backgroundTint="@color/danger"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -89,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="update"
+        android:backgroundTint="@color/primary"
         app:layout_constraintBottom_toTopOf="@+id/btnLogout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

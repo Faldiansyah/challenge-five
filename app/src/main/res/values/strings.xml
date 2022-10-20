@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Challenge 5</string>
+    <string name="form_login">Form Login</string>
+    <string name="belum_punya_akun">Belum Punya Akun?</string>
+    <string name="indonesia">Indonesia</string>
+    <string name="inggris">Inggris</string>
+    <string name="masuk">masuk</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="nama_pengguna">Nama Pengguna</string>
+    <string name="rincian">rincian</string>
+    <string name="rincian_permainan">RINCIAN PERMAINAN</string>
+    <string name="profil">Profil</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="umur">Umur</string>
+    <string name="alamat">Alamat</string>
+    <string name="perbarui">perbarui</string>
+    <string name="keluar">keluar</string>
+    <string name="daftar">Daftar</string>
+    <string name="konfirmasi_kata_sandi">Konfirmasi Kata Sandi</string>
+    <string name="selamat_datang">Selamat Datang</string>
 </resources>

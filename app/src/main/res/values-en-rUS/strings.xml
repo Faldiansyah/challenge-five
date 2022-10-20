@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Challenge 5</string>
+    <string name="form_login">Login Form</string>
+    <string name="belum_punya_akun">Don\'t Have An Account Yet?</string>
+    <string name="indonesia">Indonesian</string>
+    <string name="inggris">English</string>
+    <string name="masuk">enter</string>
+    <string name="kata_sandi">Password</string>
+    <string name="nama_pengguna">Username</string>
+    <string name="rincian">detail</string>
+    <string name="rincian_permainan">GAME DETAILS</string>
+    <string name="profil">Profile</string>
+    <string name="nama_lengkap">Fullname</string>
+    <string name="alamat">Address</string>
+    <string name="perbarui">update</string>
+    <string name="keluar">logout</string>
+    <string name="daftar">Register</string>
+    <string name="konfirmasi_kata_sandi">Confirm Password</string>
+    <string name="selamat_datang">Welcome</string>
+    <string name="umur">Age</string>
+</resources>

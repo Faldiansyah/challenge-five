@@ -2,6 +2,7 @@ package com.cowok.hijrah.challenge5.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class GetAllUserResponseItem(
     @SerializedName("address")
@@ -16,4 +17,4 @@ data class GetAllUserResponseItem(
     val password: String,
     @SerializedName("username")
     val username: String
-)
+): Serializable

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.cowok.hijrah.challenge5.DetailGameActivity
+import com.cowok.hijrah.challenge5.activity.DetailGameActivity
 import com.cowok.hijrah.challenge5.databinding.ItemGameBinding
 import com.cowok.hijrah.challenge5.model.GetAllGamesResponseItem
 

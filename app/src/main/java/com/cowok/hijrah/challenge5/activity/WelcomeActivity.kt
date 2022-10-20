@@ -1,4 +1,4 @@
-package com.cowok.hijrah.challenge5
+package com.cowok.hijrah.challenge5.activity
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.databinding.DataBindingUtil
 import com.cowok.hijrah.challenge5.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
@@ -16,23 +15,23 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome)
+        binding = ActivityWelcomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         sharedPref = this.getSharedPreferences("dataUser", Context.MODE_PRIVATE)
-        var dbUser = sharedPref.getString("username", "")
+        val dbUser = sharedPref.getString("username", "")
 
-        // seleksi data di sharedpreferencenya ada atau tidak.
+        // periksa data user
         if (dbUser == "") {
-            var dbUsername = sharedPref.getString("username", "You!")
-            var bundle = Bundle()
+            val dbUsername = sharedPref.getString("username", "")
+            val bundle = Bundle()
             bundle.putString("username", dbUsername)
 
             Handler(Looper.myLooper()!!).postDelayed({
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }, 3000)
-        }else{
+        } else {
             Handler(Looper.myLooper()!!).postDelayed({
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()

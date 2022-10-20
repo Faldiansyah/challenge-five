@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".ProfileActivity">
+    tools:context=".activity.ProfileActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -48,12 +48,12 @@
         app:layout_constraintTop_toBottomOf="@+id/editUsername" />
 
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/editUmur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Umur"
         android:inputType="text"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,17 +61,17 @@
         app:layout_constraintTop_toBottomOf="@+id/editFullname" />
 
     <EditText
-        android:id="@+id/editConfirm"
+        android:id="@+id/editAlamat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Konfirmasi Password"
+        android:hint="Alamat"
         android:inputType="text"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editUmur" />
 
     <Button
         android:id="@+id/btnLogout"
@@ -92,4 +92,5 @@
         app:layout_constraintBottom_toTopOf="@+id/btnLogout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.cowok.hijrah.challenge5
+package com.cowok.hijrah.challenge5.activity
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +28,5 @@ class DetailGameActivity : AppCompatActivity() {
         binding.authorGame.text = pembuat+dataGame.author
         binding.timeGame.text = tanggal+dataGame.time
         binding.descGame.text = deskripsi+dataGame.desc
-
     }
 }

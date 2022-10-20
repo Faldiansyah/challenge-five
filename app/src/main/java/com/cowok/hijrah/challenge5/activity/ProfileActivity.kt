@@ -1,4 +1,4 @@
-package com.cowok.hijrah.challenge5
+package com.cowok.hijrah.challenge5.activity
 
 import android.content.Context
 import android.content.Intent
@@ -20,14 +20,16 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         sharedPref = this.getSharedPreferences("dataUser", Context.MODE_PRIVATE)
+        // ambil data dari API
         val username = sharedPref.getString("username", "")
         val name = sharedPref.getString("name", "")
-        val password = sharedPref.getString("password", "")
+        val age = sharedPref.getInt("age", 0)
+        val address = sharedPref.getString("address", "")
 
         binding.editUsername.setText(username)
         binding.editFullname.setText(name)
-        binding.editPassword.setText(password)
-        binding.editConfirm.setText(password)
+        binding.editUmur.setText(age.toString())
+        binding.editAlamat.setText(address)
 
         binding.btnLogout.setOnClickListener {
             val addUser = sharedPref.edit()
@@ -38,23 +40,21 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.btnUpdate.setOnClickListener {
-            //ambil data
             val id = sharedPref.getString("id", "")
             val username = binding.editUsername.text.toString()
-            val password = binding.editPassword.text.toString()
+            val password = sharedPref.getString("password", "")
             val name = binding.editFullname.text.toString()
-            val age = sharedPref.getInt("age", 0)
-            val addr = sharedPref.getString("address", "")
+            val age = binding.editUmur.text.toString().toInt()
+            val address = binding.editAlamat.text.toString()
 
-            //update data di api
-            updateDataFilm(id!!.toInt(), name, username, password, age, addr)
+            updateDataUser(id!!.toInt(), name, username, password!!, age, address)
 
-            //update data di sharedpref
+            // update data di sharedpref
             val addUser = sharedPref.edit()
             addUser.putString("username", username)
             addUser.putString("name", name)
             addUser.putInt("age", age)
-            addUser.putString("address", addr)
+            addUser.putString("address", address)
             addUser.apply()
 
             startActivity(Intent(this, MainActivity::class.java))
@@ -62,9 +62,9 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
-    private fun updateDataFilm(id: Int, name: String, username: String, password: String, age: Int, addr: String?) {
+    private fun updateDataUser(id: Int, name: String, username: String, password: String, age: Int, address: String) {
         val viewModel = ViewModelProvider(this).get(ViewModelUser::class.java)
-        viewModel.callEditUser(id, name, username, password, age, addr!!)
+        viewModel.callEditUser(id, name, username, password, age, address)
         viewModel.editLiveDataUser().observe(this, {
             if (it != null) {
                 Toast.makeText(this, "Data Berhasil Diubah!", Toast.LENGTH_SHORT).show()

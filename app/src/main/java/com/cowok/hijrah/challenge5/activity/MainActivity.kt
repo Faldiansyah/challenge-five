@@ -1,4 +1,4 @@
-package com.cowok.hijrah.challenge5
+package com.cowok.hijrah.challenge5.activity
 
 import android.annotation.SuppressLint
 import android.content.Context

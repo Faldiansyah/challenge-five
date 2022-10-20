@@ -1,4 +1,4 @@
-package com.cowok.hijrah.challenge5
+package com.cowok.hijrah.challenge5.activity
 
 import android.content.ContentValues
 import android.content.Context
@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
-import com.cowok.hijrah.challenge5.adapter.UserAdapter
+import com.cowok.hijrah.challenge5.R
 import com.cowok.hijrah.challenge5.databinding.ActivityLoginBinding
 import com.cowok.hijrah.challenge5.model.GetAllUserResponseItem
 import com.cowok.hijrah.challenge5.network.RetrofitUser
@@ -20,22 +19,24 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var sharedPref: SharedPreferences
-    private lateinit var adapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         sharedPref = this.getSharedPreferences("dataUser", Context.MODE_PRIVATE)
 
         binding.btnLogin.setOnClickListener {
-            //data inputan user
-            var inputUser = binding.editUsername.text.toString()
-            var inputPass = binding.editPassword.text.toString()
+            // data dari edittext
+            val inputUser = binding.editUsername.text.toString()
+            val inputPass = binding.editPassword.text.toString()
 
-            if (inputUser != null && inputPass != null) requestLogin(inputUser, inputPass)
-            else if(inputUser == null && inputPass == null) toast("Username atau Password Kosong!")
+            if (inputUser != null && inputPass != null){
+                requestLogin(inputUser, inputPass)
+            } else if (inputUser == null && inputPass == null){
+                toast("Username atau Password Kosong!")
+            }
         }
 
         binding.belumPunyaAkun.setOnClickListener{
@@ -72,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
                                     addUser.putString("address", respon[a].address)
                                     addUser.apply()
 
-                                    toast("Login Berhasil")
+                                    toast("Login Berhasil!")
                                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                                 }
                             }
@@ -88,8 +89,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<List<GetAllUserResponseItem>>, t: Throwable) {
-//                    toast("Gagal Memuat Data OnFailure!")
-                    Log.e(ContentValues.TAG, "onFailure: ${t.message}")
+                    toast("Gagal Memuat Data OnFailure!")
                 }
 
             })
